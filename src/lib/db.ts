@@ -1,4 +1,19 @@
-import { sql } from '@vercel/postgres';
+import { createPool } from '@vercel/postgres';
+
+// Configure database connection using Replit's DATABASE_URL or Vercel's POSTGRES_URL
+const connectionString = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+
+if (!connectionString) {
+  throw new Error('DATABASE_URL or POSTGRES_URL environment variable is required');
+}
+
+// Create a connection pool
+const pool = createPool({
+  connectionString
+});
+
+// Export sql tagged template
+export const sql = pool.sql;
 
 export async function initDatabase() {
   // Create tables if they don't exist
