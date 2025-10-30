@@ -7,7 +7,11 @@ const withPWA = require('next-pwa')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  allowedDevOrigins: ["*.preview.same-app.com"],
+  allowedDevOrigins: [
+    "*.preview.same-app.com",
+    "*.replit.dev",
+    "*.repl.co"
+  ],
   images: {
     unoptimized: true,
     domains: [
